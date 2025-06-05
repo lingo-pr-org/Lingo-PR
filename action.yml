@@ -1,0 +1,8 @@
+name: Lingo-PR
+description: "Summarise Pull Request diff then translate to Arabic & Hebrew & English"
+runs:
+  using: node20
+  main: dist/index.js
+branding:
+  icon: message-square
+  color: blue

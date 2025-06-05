@@ -1,0 +1,28 @@
+name: Lingo-PR demo
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  lingo:
+    permissions:
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Get PR diff
+        id: diff
+        run: |
+          echo "patch<<EOF" >> $GITHUB_OUTPUT
+          curl -L ${{ github.event.pull_request.diff_url }} >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - uses: ./
+        with:
+          patch: ${{ steps.diff.outputs.patch }}
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
