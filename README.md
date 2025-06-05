@@ -59,3 +59,4 @@ jobs:
 
 After you push the `v1` tag and verify your organisation,
 draft a listing in **GitHub Marketplace** and add paid plans.
+Test Lingo-PR
