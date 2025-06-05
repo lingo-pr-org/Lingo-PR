@@ -1,5 +1,9 @@
 name: Lingo-PR
-description: "Summarise Pull Request diff then translate to Arabic & Hebrew & English"
+description: Summarise PR diff and translate
+inputs:               # ← أضف هذا
+  patch:
+    description: "Git diff text"
+    required: true
 runs:
   using: node20
   main: dist/index.js
